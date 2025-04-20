@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizlet: Learning tools & flashcards</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            quizlet: {
+              blue: '#4257b2',
+              lighterBlue: '#4255ff',
+              darkPurple: '#3b4da3',
+              purple: '#4255ff'
+            }
+          },
+          fontFamily: {
+            nunito: ['Nunito', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f7f8fa;
+    }
+    
+    .search-input::placeholder {
+      color: #a8b1d6;
+    }
+
+    @font-face {
+      font-family: 'hurme_no2-webfont';
+      src: url('https://assets.quizlet.com/a/j/dist/app/i/fonts/hurme/webfont-normal.e5b59b7ce0ba.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'hurme_no2-webfont';
+      src: url('https://assets.quizlet.com/a/j/dist/app/i/fonts/hurme/webfont-semibold.d5e53a63e1c0.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'hurme_no2-webfont';
+      src: url('https://assets.quizlet.com/a/j/dist/app/i/fonts/hurme/webfont-bold.e2e55214c00c.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .hurme-font {
+      font-family: hurme_no2-webfont, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .hero-section {
+      background-color: #f7f8fa;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-sm border-b border-gray-100 fixed w-full top-0 z-10">
+    <div class="mx-auto px-6 py-3 flex items-center justify-between h-16">
+      
+      <!-- Left section: Logo and navigation -->
+      <div class="flex items-center space-x-12">
+        <!-- Logo -->
+        <a href="#" class="text-quizlet-lighterBlue text-3xl font-extrabold">Quizlet</a>
+        
+        <!-- Navigation items -->
+        <div class="flex items-center space-x-8">
+          <div class="flex items-center space-x-1 text-gray-700 font-medium cursor-pointer">
+            <span class="text-gray-700 hurme-font">Study tools</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        
+          <div class="flex items-center space-x-1 text-gray-700 font-medium cursor-pointer">
+            <span class="text-gray-700 hurme-font">Subjects</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Search bar -->
+      <div class="flex-1 flex justify-center">
+        <div class="flex items-center bg-[#F6F7FB] rounded-full pl-4 pr-4 py-2 w-[440px] h-10">
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          <input 
+            type="text" 
+            class="bg-transparent border-none focus:outline-none search-input pl-3 text-gray-600 w-full hurme-font"
+            placeholder="Flashcard sets, textbooks, questions"
+          >
+        </div>
+      </div>
+        
+      <!-- Right section: Create, Login -->
+      <div class="flex items-center space-x-6">
+        <!-- Create button -->
+        <div class="flex items-center text-quizlet-lighterBlue cursor-pointer">
+          <span class="text-xl font-bold">+</span>
+          <span class="ml-1 font-medium hurme-font">Create</span>
+        </div>
+        
+        <!-- Login button -->
+        <button class="bg-quizlet-lighterBlue hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full hurme-font">
+          Log in
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with padding to account for fixed navbar -->
+  <section class="hero-section pt-32 pb-24">
+    <div class="container mx-auto text-center max-w-3xl px-4">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6 hurme-font">How do you want to study?</h1>
+      <p class="text-lg text-gray-700 mb-10 hurme-font">
+        Master whatever you're learning with Quizlet's interactive flashcards, practice tests,
+        and study activities.
+      </p>
+      <div class="flex flex-col items-center">
+        <a href="#" class="bg-quizlet-purple hover:bg-quizlet-darkPurple text-white font-semibold py-3 px-8 rounded-full text-lg mb-6 hurme-font">
+          Sign up for free
+        </a>
+        <a href="#" class="text-quizlet-purple hover:text-quizlet-darkPurple font-medium text-lg hurme-font">
+          I'm a teacher
+        </a>
+      </div>
+    </div>
+  </section>
+      
+      <!-- Study Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+        <!-- Learn Card -->
+        <div class="study-card bg-blue-100 rounded-xl overflow-hidden">
+          <div class="p-6 pb-24 relative h-full card-content">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Learn</h3>
+            <div class="absolute bottom-0 right-0 p-4">
+              <img src="https://assets.quizlet.com/a/j/dist/app/i/prismic/learn-mode.76b5e9a5b0ed5e5.svg" alt="Learn" class="w-24 h-24" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- Study Guides Card -->
+        <div class="study-card bg-purple-100 rounded-xl overflow-hidden">
+          <div class="p-6 pb-24 relative h-full card-content">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Study Guides</h3>
+            <div class="mt-4">
+              <div class="bg-white rounded-lg p-3 mb-2">
+                <h4 class="font-bold">Greek art</h4>
+                <div class="flex items-center mt-2">
+                  <div class="w-6 h-6 rounded-full bg-purple-400 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="ml-2 text-gray-400 text-sm">Outline</div>
+                </div>
+                <div class="flex items-center mt-2">
+                  <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="ml-2 text-gray-400 text-sm">Quick reference</div>
+                </div>
+                <div class="mt-2 text-sm font-medium">Key dates</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Flashcards Card -->
+        <div class="study-card bg-indigo-500 rounded-xl overflow-hidden">
+          <div class="p-6 pb-24 relative h-full card-content">
+            <h3 class="text-xl font-bold text-white mb-4">Flashcards</h3>
+            <div class="absolute bottom-0 right-0 p-4">
+              <div class="bg-white rounded-lg shadow-lg w-32 h-24 transform rotate-12 flex items-center justify-center">
+                <p class="text-gray-800 font-medium">superior<br>vena cava</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Practice Tests Card -->
+        <div class="study-card bg-orange-100 rounded-xl overflow-hidden">
+          <div class="p-6 pb-24 relative h-full card-content">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Practice Tests</h3>
+            <div class="mt-4">
+              <div class="bg-white rounded-lg p-3">
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <div class="font-bold text-gray-800">Score</div>
+                    <div class="font-bold text-xl">84%</div>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">Results</div>
+                    <div class="font-bold text-xl">76/90</div>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">Total time</div>
+                    <div class="font-bold text-xl">70m</div>
+                  </div>
+                </div>
+                <div class="mt-4 h-2 bg-gray-200 rounded-full">
+                  <div class="h-2 bg-red-400 rounded-full w-3/4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Every class, every test, one ultimate study app</h2>
+          <p class="text-lg text-gray-600 mb-10">
+            Create your own flashcards or find sets made by teachers, students, and experts. Study them
+            anytime, anywhere with our free app.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="block">
+              <img src="https://assets.quizlet.com/a/j/dist/app/i/app-store-badge.f1a7c3a9a.svg" alt="Download on the App Store" class="h-10" />
+            </a>
+            <a href="#" class="block">
+              <img src="https://assets.quizlet.com/a/j/dist/app/i/play-store-badge.92a7c7c3f.svg" alt="Get it on Google Play" class="h-10" />
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <img src="https://assets.quizlet.com/a/j/dist/app/i/prismic/desktop-mobile.d89b4c7c9.png" alt="Quizlet app" class="w-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY MATERIAL SECTION -->
+  <section class="py-20 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img src="https://assets.quizlet.com/a/j/dist/app/i/prismic/study-guide.6c8b7b6c7.png" alt="Study guide" class="w-full" />
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Make class material instantly studiable</h2>
+          <p class="text-lg text-gray-600 mb-10">
+            Turn your slides, videos, and notes into flashcard sets, practice tests, and study guides.
+          </p>
+          <a href="#" class="bg-quizlet-purple hover:bg-quizlet-darkPurple text-white font-medium py-3 px-6 rounded-full inline-block">Try it out</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 py-12 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Quizlet</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">About</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Careers</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Press</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Students</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Flashcards</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Learn</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Solutions</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Quizlet Plus</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Teachers</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Live</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Checkpoint</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Blog</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Quizlet Plus for teachers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Support</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Help center</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Honor code</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Community guidelines</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-quizlet-purple">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <p class="text-gray-500 text-sm">© 2023 Quizlet Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

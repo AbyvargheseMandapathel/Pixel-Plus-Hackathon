@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizlet Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .search-gradient {
+            background: linear-gradient(90deg, #ffcd62 0%, #ff8a6d 24.48%, #ff5e95 49.48%, #df69f1 76.04%, #8d7cff 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(90deg, #4255ff 0%, #428dff 100%);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-4 py-2 shadow-md">
+        <div class="flex items-center space-x-4">
+            <img src="https://quizlet.com/cdn-cgi/image/f=auto,fit=contain,w=120,h=120/static/logo-4df21c9d49be4c3b4e8d7a6d8343b1d6.png" 
+                 class="h-8 w-8" alt="Quizlet">
+            <a href="#" class="text-gray-700 font-semibold hover:text-blue-600">Create</a>
+            <a href="#" class="text-gray-700 font-semibold hover:text-blue-600">Explore</a>
+            <a href="#" class="text-gray-700 font-semibold hover:text-blue-600">Solutions</a>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <div class="search-gradient p-[2px] rounded-full">
+                <div class="flex bg-white rounded-full">
+                    <input type="text" placeholder="Study sets, textbooks, questions" 
+                           class="px-6 py-2 rounded-full w-96 focus:outline-none">
+                    <button class="bg-gray-100 rounded-full px-6 py-2 font-semibold">Search</button>
+                </div>
+            </div>
+            
+            <div class="flex space-x-2">
+                <a href="#" class="px-4 py-2 text-gray-700 font-semibold hover:bg-gray-100 rounded-lg">Log in</a>
+                <a href="#" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">
+                    Sign up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white py-16">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-4">
+            <div class="max-w-xl">
+                <h1 class="text-5xl font-bold mb-6">The best digital flashcards and study tools</h1>
+                <p class="text-xl mb-8">Join over 60 million students using Quizlet’s science-backed flashcards, practice tests and expert solutions to improve their grades and reach their goals.</p>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100">
+                    Sign up for free
+                </button>
+            </div>
+            <img src="https://quizlet.com/_next/static/media/heroes-pair@2x.dcb6e7a6.png" 
+                 class="w-1/3" alt="Hero image">
+        </div>
+    </div>
+
+    <!-- Study Tools Section -->
+    <div class="max-w-6xl mx-auto py-16 px-4">
+        <h2 class="text-3xl font-bold mb-12">The most popular study tools on Quizlet</h2>
+        <div class="grid grid-cols-3 gap-8">
+            <div class="p-6 shadow-lg rounded-xl hover:scale-105 transition-transform">
+                <div class="bg-blue-100 w-fit p-4 rounded-full mb-4">
+                    📘
+                </div>
+                <h3 class="text-xl font-bold mb-4">Flashcards</h3>
+                <p class="text-gray-600">Review terms and definitions or questions and answers</p>
+            </div>
+            <div class="p-6 shadow-lg rounded-xl hover:scale-105 transition-transform">
+                <div class="bg-purple-100 w-fit p-4 rounded-full mb-4">
+                    🧠
+                </div>
+                <h3 class="text-xl font-bold mb-4">Learn</h3>
+                <p class="text-gray-600">Get personalized coaching based on what you need to work on</p>
+            </div>
+            <div class="p-6 shadow-lg rounded-xl hover:scale-105 transition-transform">
+                <div class="bg-green-100 w-fit p-4 rounded-full mb-4">
+                    ✍️
+                </div>
+                <h3 class="text-xl font-bold mb-4">Test</h3>
+                <p class="text-gray-600">Prepare for test day with this adaptive practice test</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-12">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-6 gap-8">
+            <div class="col-span-2">
+                <img src="https://quizlet.com/cdn-cgi/image/f=auto,fit=contain,w=120,h=120/static/logo-4df21c9d49be4c3b4e8d7a6d8343b1d6.png" 
+                     class="h-8 w-8 mb-4" alt="Quizlet">
+                <p class="text-gray-600">© 2024 Quizlet, Inc.</p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="font-bold mb-2">About us</h4>
+                <a href="#" class="block text-gray-600 hover:text-blue-600">About Quizlet</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600">Careers</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600">News</a>
+            </div>
+            <!-- Add more footer columns as needed -->
+        </div>
+    </footer>
+
+    <script>
+        // Add interactive functionality
+        document.querySelector('.search-gradient button').addEventListener('click', function() {
+            const input = document.querySelector('.search-gradient input');
+            if (!input.value.trim()) {
+                alert('Please enter a search term');
+                input.focus();
+            }
+        });
+    </script>
+</body>
+</html>
